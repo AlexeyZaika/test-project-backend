@@ -11,7 +11,7 @@ import { checkAuth, handleValidationErrors, getFileExtension } from './utils/ind
 // 'mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0'
 
 mongoose
-  .connect(process.env.MONGODB_URL)
+  .connect('mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Connect to DB'))
   .catch((error) => console.log('Error connect', error));
 
