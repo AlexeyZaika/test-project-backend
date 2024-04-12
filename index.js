@@ -8,8 +8,10 @@ import { userController } from './controllers/index.js';
 import { registerValidation, loginValidation } from './validations/auth.js';
 import { checkAuth, handleValidationErrors, getFileExtension } from './utils/index.js';
 
+// 'mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0'
+
 mongoose
-  .connect('mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
+  .connect(process.env.MONGODB_URL)
   .then(() => console.log('Connect to DB'))
   .catch((error) => console.log('Error connect', error));
 
@@ -55,7 +57,7 @@ app.post('/upload', checkAuth, upload.single('image'), (request, response) => {
   });
 });
 
-app.listen(8080, (error) => {
+app.listen(process.env.PORT || 8080, (error) => {
   if (error) {
     return console.log(error);
   }
