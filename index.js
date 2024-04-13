@@ -60,7 +60,7 @@ app.get('/', async (req, res) => {
 
   res.json({
     title: 'Hello',
-    // user: user,
+    user: user,
   })
 })
 
