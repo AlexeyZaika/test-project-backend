@@ -7,11 +7,12 @@ import path from 'path';
 import { userController } from './controllers/index.js';
 import { registerValidation, loginValidation } from './validations/auth.js';
 import { checkAuth, handleValidationErrors, getFileExtension } from './utils/index.js';
+import { config } from 'dotenv';
 
-// 'mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0'
+config();
 
 mongoose
-  .connect('mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
+  .connect(process.env.MONGO_URL)
   .then(() => console.log('Connect to DB'))
   .catch((error) => console.log('Error connect', error));
 
