@@ -13,7 +13,7 @@ import UserModel from './models/user.js';
 config();
 
 mongoose
-  .connect(process.env.MONGO_URL)
+  .connect('mongodb+srv://analityx:qwerty1981@cluster0.1yvelnj.mongodb.net/blog?retryWrites=true&w=majority&appName=Cluster0')
   .then(() => console.log('Connect to DB'))
   .catch((error) => console.log('Error connect', error));
 
