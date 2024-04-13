@@ -8,7 +8,6 @@ import { userController } from './controllers/index.js';
 import { registerValidation, loginValidation } from './validations/auth.js';
 import { checkAuth, handleValidationErrors, getFileExtension } from './utils/index.js';
 import { config } from 'dotenv';
-import UserModel from './models/user.js';
 
 config();
 
@@ -48,21 +47,6 @@ const upload = multer({
 app.use(express.json());
 app.use(cors());
 app.use('/upload', express.static('uploads'));
-
-app.get('/', async (req, res) => {
-  const user = await UserModel.findOne({ email: 'test@test.com' });
-
-  if (!user) {
-    return res.status(404).json({
-      message: 'User is not found',
-    });
-  }
-
-  res.json({
-    title: 'Hello',
-    user: user,
-  })
-})
 
 app.post('/auth/login', loginValidation, handleValidationErrors, userController.login);
 app.post('/auth/register', upload.single('avatar'), registerValidation, handleValidationErrors, userController.register);
